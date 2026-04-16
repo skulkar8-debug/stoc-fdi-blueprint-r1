@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FDI Service Page Blueprint | STOC Advisory</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b1020;
+      --bg-alt: #10182a;
+      --line: #2a3858;
+      --accent: #4fb4ff;
+      --text-main: #e5ecff;
+      --text-muted: #98a2c7;
+      --card: #111a30;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #151f3a 0, #050816 42%, #02040a 100%);
+      color: var(--text-main);
+      line-height: 1.6;
+      font-size: 15px;
+    }
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 2.5rem 1.25rem 3.5rem;
+    }
+    .grid-bg {
+      background-image: linear-gradient(var(--line) 1px, transparent 1px),
+                        linear-gradient(90deg, var(--line) 1px, transparent 1px);
+      background-size: 24px 24px;
+      background-position: -1px -1px;
+      border-radius: 18px;
+      padding: 1.75rem;
+      border: 1px solid #1e2b4a;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.65);
+    }
+    .header-row {
+      display: grid;
+      grid-template-columns: 3fr 2fr;
+      gap: 2.25rem;
+      align-items: center;
+    }
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent);
+    }
+    .tag-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 999px;
+      border: 1px solid rgba(79,180,255,0.7);
+      box-shadow: 0 0 0 1px rgba(79,180,255,0.35);
+    }
+    h1 {
+      margin: 0.4rem 0 0.45rem;
+      font-size: 2.4rem;
+      letter-spacing: -0.04em;
+    }
+    .subhead {
+      margin: 0;
+      color: var(--text-muted);
+      max-width: 40rem;
+      font-size: 0.98rem;
+    }
+    .hero-wireframe {
+      border-radius: 14px;
+      border: 1px dashed rgba(173, 192, 255, 0.6);
+      background: radial-gradient(circle at top left, rgba(79,180,255,0.12), transparent 55%),
+                  linear-gradient(135deg, #0b1020, #101829);
+      padding: 1.5rem 1.4rem;
+      display: grid;
+      gap: 0.9rem;
+    }
+    .hero-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-muted);
+      opacity: 0.9;
+    }
+    .hero-box {
+      border-radius: 10px;
+      border: 1px dashed rgba(173, 192, 255, 0.5);
+      padding: 0.9rem 1rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+    .hero-image-box {
+      border-radius: 10px;
+      border: 1px dashed rgba(173, 192, 255, 0.5);
+      height: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      color: rgba(173, 192, 255, 0.9);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+    .section-label {
+      margin-top: 2.6rem;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--text-muted);
+    }
+    .section-row {
+      margin-top: 0.7rem;
+      display: grid;
+      grid-template-columns: 1.1fr 2.2fr;
+      gap: 1.75rem;
+      align-items: flex-start;
+    }
+    .section-title-box {
+      border-radius: 12px;
+      border: 1px dashed rgba(173, 192, 255, 0.7);
+      background: rgba(9, 15, 32, 0.9);
+      padding: 1.1rem 1.2rem;
+    }
+    .section-title-box h2 {
+      margin: 0 0 0.3rem;
+      font-size: 1.15rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .section-title-box p {
+      margin: 0;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+    .content-box {
+      border-radius: 12px;
+      border: 1px dashed rgba(173, 192, 255, 0.4);
+      padding: 1.1rem 1.3rem 1.2rem;
+      background: radial-gradient(circle at top left, rgba(79,180,255,0.12), transparent 55%),
+                  rgba(5, 10, 24, 0.9);
+    }
+    .content-heading {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: rgba(183, 199, 255, 0.96);
+      margin-bottom: 0.6rem;
+    }
+    .content-text {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 0.4rem;
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.16rem 0.65rem;
+      border-radius: 999px;
+      border: 1px solid rgba(173, 192, 255, 0.6);
+      font-size: 0.72rem;
+      color: rgba(209, 218, 255, 0.96);
+      margin: 0.15rem 0.25rem 0.15rem 0;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+    .pill-bullet {
+      width: 5px;
+      height: 5px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+    .columns-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.1rem;
+      margin-top: 0.6rem;
+    }
+    .column-box {
+      border-radius: 10px;
+      border: 1px dashed rgba(173, 192, 255, 0.35);
+      padding: 0.85rem 0.9rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+    .column-title {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: rgba(201, 214, 255, 0.98);
+      margin-bottom: 0.3rem;
+    }
+    .list-item {
+      display: flex;
+      gap: 0.55rem;
+      align-items: flex-start;
+      margin-top: 0.45rem;
+      font-size: 0.86rem;
+      color: var(--text-muted);
+    }
+    .list-bullet {
+      margin-top: 0.3rem;
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: rgba(173, 192, 255, 0.85);
+      flex-shrink: 0;
+    }
+    .footer-note {
+      margin-top: 2.6rem;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-align: right;
+    }
+    @media (max-width: 880px) {
+      .header-row { grid-template-columns: 1fr; }
+      .section-row { grid-template-columns: 1fr; }
+      .columns-3 { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="grid-bg">
+
+      <!-- HERO / HEADER -->
+      <div class="header-row">
+        <div>
+          <div class="tag"><span class="tag-dot"></span><span>Service Page Blueprint</span></div>
+          <h1>Finance &amp; Data Intelligence</h1>
+          <p class="subhead">Connecting underwriting, operational performance, and exit readiness through decision-grade analytics.</p>
+        </div>
+        <div class="hero-wireframe">
+          <div class="hero-label">Hero layout</div>
+          <div class="hero-box">Title &amp; one-line subhead &mdash; match hierarchy of CDS / GES service pages (no primary buttons; simple text CTA later on page).</div>
+          <div class="hero-image-box">Hero image placeholder &mdash; align style with CDS hero graphic</div>
+        </div>
+      </div>
+
+      <!-- SECTION: WHAT IS FDI -->
+      <div class="section-label">Section 01</div>
+      <div class="section-row">
+        <div class="section-title-box">
+          <h2>What is FDI?</h2>
+          <p>Short explainer block directly under hero, mirroring "What Is CDS?" on the Corporate Development Support page.[page:1]</p>
+        </div>
+        <div class="content-box">
+          <div class="content-heading">Content blueprint</div>
+          <div class="content-text">FDI is STOC Advisory’s analytics and performance intelligence offering for private equity-backed and founder-led companies. It unifies financial, commercial, and operational data so sponsors and operators can manage performance consistently across the deal and portfolio lifecycle.</div>
+          <div class="content-text">This block should be 2&ndash;3 sentences, written in the same tone as existing services pages, emphasizing who it is for and what problem it solves.[page:1][page:2]</div>
+        </div>
+      </div>
+
+      <!-- SECTION: OUR APPROACH -->
+      <div class="section-label">Section 02</div>
+      <div class="section-row">
+        <div class="section-title-box">
+          <h2>Our approach</h2>
+          <p>Three numbered steps, consistent with how STOC describes process on other services pages (simple, practical, and execution-focused).[page:1][page:2]</p>
+        </div>
+        <div class="content-box">
+          <div class="content-heading">3-step framework</div>
+
+          <div class="list-item">
+            <div class="list-bullet"></div>
+            <div><strong>1. Centralize and standardize the data.</strong> Aggregate financial, operational, CRM, and site-level inputs into a consistent reporting structure so teams operate from one version of the truth.</div>
+          </div>
+
+          <div class="list-item">
+            <div class="list-bullet"></div>
+            <div><strong>2. Build driver-based insight.</strong> Develop KPI trees, unit economics, cohort views, and variance bridges that connect operating drivers to revenue, margin, cash flow, and valuation.</div>
+          </div>
+
+          <div class="list-item">
+            <div class="list-bullet"></div>
+            <div><strong>3. Enable ongoing decision-making.</strong> Embed dashboards, reporting cadences, and scenario models that support deal teams, portfolio leadership, boards, and lenders throughout the hold period.</div>
+          </div>
+
+          <div class="content-text" style="margin-top:0.7rem;font-size:0.85rem;color:var(--text-muted);">
+            CTA copy (no button): <em>“Let’s turn fragmented data into investment‑grade insight. Reach out to schedule a discovery session with our FDI team.”</em> &mdash; mirrors CDS "Let’s…" closing line.[page:1]
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION: CORE DELIVERABLES -->
+      <div class="section-label">Section 03</div>
+      <div class="section-row">
+        <div class="section-title-box">
+          <h2>Core deliverables</h2>
+          <p>FDI deliverables organized as numbered items, similar to CDS and GES, but focused on analytics across the lifecycle.[page:1][page:2]</p>
+        </div>
+        <div class="content-box">
+          <div class="content-heading">Deliverable groups</div>
+
+          <div class="columns-3">
+            <div class="column-box">
+              <div class="column-title">01 · Sourcing &amp; market</div>
+              <div class="list-item">
+                <div class="list-bullet"></div>
+                <div>Market segmentation, sizing, and fragmentation analysis.</div>
+              </div>
+              <div class="list-item">
+                <div class="list-bullet"></div>
+                <div>Proprietary scoring models for growth, margin, and strategic fit.</div>
+              </div>
+              <div class="list-item">
+                <div class="list-bullet"></div>
+                <div>CRM enrichment and target prioritization to focus origination.</div>
+              </div>
+            </div>
+
+            <div class="column-box">
+              <div class="column-title">02 · Diligence &amp; underwriting</div>
+              <div class="list-item">
+                <div class="list-bullet"></div>
+                <div>QoE normalization with underlying driver analysis.</div>
+              </div>
+              <div class="list-item">
+                <div class="list-bullet"></div>
+                <div>Cohort-based revenue, customer, and margin analytics.</div>
+              </div>
+              <div class="list-item">
+                <div class="list-bullet"></div>
+                <div>Unit economics, margin bridges, and driver-based financial models.</div>
+              </div>
+            </div>
+
+            <div class="column-box">
+              <div class="column-title">03 · Operational value creation</div>
+              <div class="list-item">
+                <div class="list-bullet"></div>
+                <div>Weekly and monthly dashboards aligned to revenue, labor, pricing, and churn.</div>
+              </div>
+              <div class="list-item">
+                <div class="list-bullet"></div>
+                <div>KPI trees linking operating metrics to P&amp;L outcomes.</div>
+              </div>
+              <div class="list-item">
+                <div class="list-bullet"></div>
+                <div>Variance diagnostics and margin analysis across sites and vendors.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="columns-3">
+            <div class="column-box">
+              <div class="column-title">04 · Platform &amp; roll-up</div>
+              <div class="list-item">
+                <div class="list-bullet"></div>
+                <div>Standardized KPIs and chart of accounts across entities.</div>
+              </div>
+              <div class="list-item">
+                <div class="list-bullet"></div>
+                <div>Post-close tracking versus underwriting and synergy capture monitoring.</div>
+              </div>
+              <div class="list-item">
+                <div class="list-bullet"></div>
+                <div>Benchmarking and playbook deployment across sites.</div>
+              </div>
+            </div>
+
+            <div class="column-box">
+              <div class="column-title">05 · Board &amp; lender reporting</div>
+              <div class="list-item">
+                <div class="list-bullet"></div>
+                <div>Automated, drillable board packs and portfolio dashboards.</div>
+              </div>
+              <div class="list-item">
+                <div class="list-bullet"></div>
+                <div>Covenant monitoring and liquidity forecasting.</div>
+              </div>
+              <div class="list-item">
+                <div class="list-bullet"></div>
+                <div>Data-backed narratives for ICs, boards, and lenders.</div>
+              </div>
+            </div>
+
+            <div class="column-box">
+              <div class="column-title">06 · Exit &amp; sponsor intelligence</div>
+              <div class="list-item">
+                <div class="list-bullet"></div>
+                <div>Historical KPI continuity and defensible EBITDA bridges.</div>
+              </div>
+              <div class="list-item">
+                <div class="list-bullet"></div>
+                <div>Buyer-ready dashboards showing scalability and repeatability.</div>
+              </div>
+              <div class="list-item">
+                <div class="list-bullet"></div>
+                <div>Cross-portfolio benchmarking and capital allocation analytics.</div>
+              </div>
+            </div>
+          </div>
+
+          <div style="margin-top:0.9rem;">
+            <span class="pill"><span class="pill-bullet"></span>Map each deliverable to CDS / TAS / GES touchpoints</span>
+            <span class="pill"><span class="pill-bullet"></span>Keep copy concise &amp; sponsor-facing</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-note">FDI page blueprint &mdash; layout and copy structure designed to mimic STOC's existing service pages while emphasizing analytics across the deal lifecycle.[page:1][page:2]</div>
+    </div>
+  </div>
+</body>
+</html>
